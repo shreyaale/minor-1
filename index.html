@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rhythm Dance Studio</title>
+  <style>
+    :root {
+  --primary-color: #ff6f61;
+  --secondary-color: #ff9472;
+  --accent-color: #ffd700;
+  --light-bg: rgba(255, 255, 255, 0.05);
+}
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: url('/img/kid.jpg') no-repeat center center fixed;
+      background-size: cover;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-title-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+      object-fit: contain;
+      border: 2px solid white;
+      border-radius: 5px;
+    }
+
+    .studio-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #FFF;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0 1rem;
+    }
+
+    nav a {
+      color: #FFF;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 0.5rem;
+    }
+
+    nav a:hover {
+      color: #f8a5c2;
+    }
+
+    #darkModeToggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background-color: #555;
+      transition: background-color 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      background-color: #777;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .welcome-message {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #000;
+    }
+
+    .about-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 40px;
+      color: #fff;
+      text-shadow: 1px 1px 8px #000;
+    }
+
+    .about-left, .about-right {
+      flex: 1;
+      padding: 24px 0;
+    }
+
+    .about-left {
+      text-align: left;
+      color: black;
+    }
+
+    .about-right {
+      text-align: center;
+    }
+
+    .instructors-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .instructors-row img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #e67e22;
+      background: #eee;
+    }
+
+    /* GALLERY SECTION */
+    .gallery-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .gallery-title {
+      color: #e67e22;
+      margin-bottom: 24px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    .page-title {
+      color: #000;
+    }
+    .classes-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+            color: #000;
+        }
+        
+        .class-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .class-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .class-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .class-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .class-card:hover .class-image img {
+            transform: scale(1.1);
+        }
+        
+        .class-content {
+            padding: 25px;
+        }
+        
+        .class-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #6e45e2;
+        }
+        
+        .class-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .class-details {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .class-details-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .class-details-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .class-details-value {
+            color: #6e45e2;
+            font-weight: 500;
+        }
+        
+        .enroll-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #6e45e2, #88d3ce);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .enroll-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(110, 69, 226, 0.4);
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(135deg, #f5f7fa, #e4e8f0);
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+        
+        .features-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #6e45e2;
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #6e45e2;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .feature-description {
+            color: #666;
+        }
+        .feedback-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 40px 0;
+    justify-content: center;
+}
+
+.feedback-container {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.feedback-container h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.feedback-form {
+    flex: 1;
+    min-width: 320px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    color: #080808;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.feedback-form h2 {
+    color: #040404;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #0a0a0a;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.rating-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+    color: #111111;
+}
+
+.star-rating {
+    display: flex;
+    gap: 8px;
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    cursor: pointer;
+    color: #0f0f0f;
+    transition: color 0.3s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: rgb(10, 10, 10);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: 600;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials {
+    flex: 1;
+    min-width: 320px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    color: #080808;
+}
+
+.testimonials h2 {
+    color: #0c0c0c;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.testimonial-card .name {
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.testimonial-card .rating {
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.testimonial-card .date {
+    font-size: 0.8rem;
+    color: #0c0c0c;
+    margin-bottom: 10px;
+}
+
+.testimonial-card p {
+    color: #0b0b0b;
+}
+
+        .contact-container {
+          color: #000;
+        }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .contact-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: #7d3c98;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            background: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+        
+        .contact-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-text p, .contact-text a {
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+        
+        .map-container {
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+    /* FOOTER */
+    footer {
+      background-color: #000;
+      color: #FFF;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    /* DARK MODE */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode header,
+    body.dark-mode footer {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode nav a {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode #darkModeToggle {
+      background-color: #333;
+    }
+
+    body.dark-mode .studio-name {
+      color: #ff7eb9;
+    }
+
+    body.dark-mode .gallery-container {
+      background-color: #222;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-flex {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .about-left, .about-right {
+        text-align: center;
+      }
+
+      .instructors-row {
+        flex-direction: row;
+        gap: 18px;
+        justify-content: center;
+      }
+      .class-cards {
+                grid-template-columns: 1fr;
+            }
+      .feedback-section {
+                flex-direction: column;
+            }
+      .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+          }
+      
+  </style>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  
+
+
+</head>
+<body>
+  <header>
+    <div class="logo-title-container">
+      <img src="/img/images (3).jpeg" alt="Rhythm Dance Studio Logo" class="logo">
+      <div class="studio-name">Rhythm Dance Studio</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+      <button id="darkModeToggle">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home">
+      <div class="welcome-message">
+        <h2>Welcome to Rhythm Dance Studio</h2>
+        <p>Discover your passion for dance with us. Explore our classes, meet our talented instructors, and join a vibrant community. Whether you're a beginner or an experienced dancer, we have classes for all skill levels and ages.</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="about-flex">
+        <div class="about-left">
+          <h1>About Us</h1>
+          <p>We are a passionate team dedicated to teaching diverse dance forms. Rhythm Dance Studio is dedicated to providing an inspiring space for dancers of all levels and ages. We offer a wide range of dance classes tailored to suit different styles and skill levels. Our passionate instructors guide students in experiencing the magic of movement. With a focus on confidence and creativity, Rhythm Dance Studio nurtures individual expression and aims to foster a true love for dance. Our studio is committed to making every experience enriching and memorable.</p>
+        </div>
+        <div class="about-right">
+          <h3>Meet Our Instructors</h3>
+          <div class="instructors-row">
+            <img src="/img/teria.jpeg" alt="Instructor 1">
+            <img src="/img/nirmal1.jpeg" alt="Instructor 2">
+            <img src="/img/sushant 1.jpeg" alt="Instructor 3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <div class="gallery-container">
+        <h1 class="gallery-title">Our Gallery</h1>
+        <div class="gallery-grid">
+          <img src="/img/junior-ballet-dance-classes.webp" alt="Junior ballet class">
+          <img src="/img/2019_spring_showcase-5.jpg" alt="Spring showcase">
+          <img src="/img/pexels-haste-leart-v-690597-1024x683.jpg" alt="Dance performance">
+          <img src="/img/maxresdefault.jpg" alt="Group dance">
+          <img src="/img/grace-kathak-dance-academy-kalamassery-ernakulam-dance-classes-u0ffzi3ofl.avif" alt="Kathak dance">
+          <img src="/img/images (2).jpeg" alt="Contemporary dance">
+          <img src="/img/ballet2.jpg" alt="Ballet dancers">
+          <img src="/img/hiphop.jpg" alt="Hip hop class">
+        </div>
+      </div>
+    </section>
+    <section id="classes">
+      <h1 class="page-title">Our Dance Classes</h1>
+        
+        <div class="classes-intro">
+            <p>At Rhythm Dance Studio, we offer a diverse range of dance classes for all ages and skill levels. Whether you're a beginner looking to explore the joy of movement or an experienced dancer wanting to refine your technique, we have the perfect class for you.</p>
+        </div>
+        
+        <div class="class-cards">
+            <!-- Ballet -->
+            <div class="class-card">
+                <div class="class-image">
+                    <img src="img/kiddo.webp" alt="Ballet Class">
+                </div>
+                <div class="class-content">
+                    <h3 class="class-title">Ballet</h3>
+                    <p class="class-description">Discover the grace and precision of classical ballet. Our ballet classes focus on proper technique, alignment, and artistry while building strength and flexibility.</p>
+                    <div class="class-details">
+                        <div class="class-details-item">
+                            <span class="class-details-label">Schedule:</span>
+                            <span class="class-details-value">Mon & Wed, 4-5:30pm</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Age Group:</span>
+                            <span class="class-details-value">6+ years</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Monthly Fee:</span>
+                            <span class="class-details-value">$120</span>
+                        </div>
+                    </div>
+                    <a href="#" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+            
+            <!-- Hip Hop -->
+            <div class="class-card">
+                <div class="class-image">
+                    <img src="img/hello.jpg" alt="Hip Hop Class">
+                </div>
+                <div class="class-content">
+                    <h3 class="class-title">Hip Hop</h3>
+                    <p class="class-description">Get your groove on with our high-energy hip hop classes. Learn popping, locking, breaking and freestyle techniques to today's hottest music.</p>
+                    <div class="class-details">
+                        <div class="class-details-item">
+                            <span class="class-details-label">Schedule:</span>
+                            <span class="class-details-value">Tue & Thu, 5-6:30pm</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Age Group:</span>
+                            <span class="class-details-value">10+ years</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Monthly Fee:</span>
+                            <span class="class-details-value">$100</span>
+                        </div>
+                    </div>
+                    <a href="#" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+            
+            <!-- Contemporary -->
+            <div class="class-card">
+                <div class="class-image">
+                    <img src="img/comtempo.jpg" alt="Contemporary Class">
+                </div>
+                <div class="class-content">
+                    <h3 class="class-title">Contemporary</h3>
+                    <p class="class-description">Explore fluidity and emotion through contemporary dance. This class blends modern, jazz, and ballet techniques with personal expression.</p>
+                    <div class="class-details">
+                        <div class="class-details-item">
+                            <span class="class-details-label">Schedule:</span>
+                            <span class="class-details-value">Fri, 6-7:30pm & Sat, 10-11:30am</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Age Group:</span>
+                            <span class="class-details-value">12+ years</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Monthly Fee:</span>
+                            <span class="class-details-value">$110</span>
+                        </div>
+                    </div>
+                    <a href="#" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+            
+            <!-- Bharatnatyam -->
+            <div class="class-card">
+                <div class="class-image">
+                    <img src="img/bharatnatyam.webp" alt="Bharatnatyam Class">
+                </div>
+                <div class="class-content">
+                    <h3 class="class-title">Bharatnatyam</h3>
+                    <p class="class-description">Immerse yourself in this ancient Indian classical dance form that combines rhythmic footwork, expressive gestures, and spiritual storytelling.</p>
+                    <div class="class-details">
+                        <div class="class-details-item">
+                            <span class="class-details-label">Schedule:</span>
+                            <span class="class-details-value">Sun, 9-10:30am & Wed, 5-6:30pm</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Age Group:</span>
+                            <span class="class-details-value">All ages</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Monthly Fee:</span>
+                            <span class="class-details-value">$90</span>
+                        </div>
+                    </div>
+                    <a href="#" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+            
+            <!-- Semi-Classical -->
+            <div class="class-card">
+                <div class="class-image">
+                    <img src="img/semi.jpg" alt="Semi-Classical Class">
+                </div>
+                <div class="class-content">
+                    <h3 class="class-title">Semi-Classical</h3>
+                    <p class="class-description">A beautiful fusion of classical Indian dance with modern elements. Perfect for those who want traditional roots with contemporary expression.</p>
+                    <div class="class-details">
+                        <div class="class-details-item">
+                            <span class="class-details-label">Schedule:</span>
+                            <span class="class-details-value">Tue & Sat, 4-5:30pm</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Age Group:</span>
+                            <span class="class-details-value">8+ years</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Monthly Fee:</span>
+                            <span class="class-details-value">$95</span>
+                        </div>
+                    </div>
+                    <a href="#" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+            
+            <!-- Jazz -->
+            <div class="class-card">
+                <div class="class-image">
+                    <img src="img/jazz1.jpg" alt="Jazz Class">
+                </div>
+                <div class="class-content">
+                    <h3 class="class-title">Jazz</h3>
+                    <p class="class-description">From Broadway to commercial styles, our jazz classes emphasize technique, style, and performance with energetic choreography.</p>
+                    <div class="class-details">
+                        <div class="class-details-item">
+                            <span class="class-details-label">Schedule:</span>
+                            <span class="class-details-value">Mon & Thu, 6-7:30pm</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Age Group:</span>
+                            <span class="class-details-value">10+ years</span>
+                        </div>
+                        <div class="class-details-item">
+                            <span class="class-details-label">Monthly Fee:</span>
+                            <span class="class-details-value">$105</span>
+                        </div>
+                    </div>
+                    <a href="#" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <div class="container">
+                <h2 class="features-title">Why Choose Rhythm Dance Studio?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3 class="feature-title">Expert Instructors</h3>
+                        <p class="feature-description">Our certified instructors have years of professional experience and a passion for teaching.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Small Class Sizes</h3>
+                        <p class="feature-description">We maintain small student-teacher ratios for personalized attention.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Flexible Scheduling</h3>
+                        <p class="feature-description">Multiple class times available to fit your busy schedule.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="feature-title">Performance Opportunities</h3>
+                        <p class="feature-description">Showcase your skills in our annual recitals and community events.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="feature-title">Inclusive Environment</h3>
+                        <p class="feature-description">We welcome dancers of all ages, abilities, and backgrounds.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3 class="feature-title">Discount Packages</h3>
+                        <p class="feature-description">Save when you enroll in multiple classes or register family members.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="feedback">
+        <div class="feedback-container">
+            <h1>Share Your Feedback</h1>
+            <p>We value your experience at Rhythm Dance Studio!</p>
+        </div>
+
+    <div class="container">
+        <div class="feedback-section">
+            <div class="feedback-form">
+                <h2>Leave Your Feedback</h2>
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">Dance Class Attended</label>
+                        <select id="class" name="class" required>
+                            <option value="">Select a class</option>
+                            <option value="ballet">Ballet</option>
+                            <option value="hiphop">Hip Hop</option>
+                            <option value="salsa">Salsa</option>
+                            <option value="contemporary">Contemporary</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="tap">Tap Dance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="rating-label">Your Rating</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback">Your Feedback</label>
+                        <textarea id="feedback" name="feedback" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
+                </form>
+            </div>
+
+            <div class="testimonials">
+                <h2>What Our Students Say</h2>
+                
+                <div class="testimonial-card">
+                    <div class="name">Jessica</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="date">June 15, 2023</div>
+                    <p>"The instructors are amazing! I improved so much in just a few weeks. Highly recommend!"</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="name">Dipshikha</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="date">May 28, 2023</div>
+                    <p>"Best dance studio in town! The energy is always positive, and the classes are so much fun."</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="name">Alisha</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <div class="date">April 10, 2023</div>
+                    <p>"Great facility and friendly staff. Would love more advanced classes!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section id="contact">
+      <div class="contact-container">
+            <h1>Contact Rhythm Dance Studio</h1>
+            <p>Get in touch with us for dance classes, events, or any inquiries. We'd love to hear from you!</p>
+        
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h2>Sign Up for Classes</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class">Dance Style Interest</label>
+                        <select id="class" class="form-control" required>
+                            <option value="">Select a dance style</option>
+                            <option value="hiphop">Hip Hop</option>
+                            <option value="contemporary">Contemporary</option>
+                            <option value="ballet">Ballet</option>
+                            <option value="salsa">Salsa</option>
+                            <option value="bollywood">Bollywood</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" class="form-control" placeholder="Any special requests or questions"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Registration</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <h2>Our Contact Information</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Address</h3>
+                        <p>New Baneshwor, Kathmandu, Nepal</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <a href="tel:+9779816173773">+977 981-6173773</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:info@rhythmdance.com">info@rhythmdance.com</a>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.456086054947!2d85.33179731506212!3d27.7032596827939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb199a06c2eaf9%3A0xc5670a9173e161de!2sNew%20Baneshwor%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1620000000000!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rhythm Dance Studio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.textContent = '☀️';
+    }
+
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your feedback! We appreciate your time.');
+            this.reset();
+        });
+  </script>
+</body>
+</html>
